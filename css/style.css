@@ -1,0 +1,102 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    background: url("../images/skybg.jpeg") center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calendar {
+    width: 400px;
+    min-height: 400px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
+    color: #fff;
+}
+.month {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+}
+.month i {
+    font-size: 24px;
+    cursor: pointer;
+}
+.month h1 {
+    font-size: 30px;
+    font-weight: 400;
+    letter-spacing: 1.1px;
+    line-height: 40px;
+}
+.month p {
+    font-size: 17px;
+    font-weight: 400;
+}
+.weekdays {
+    width: 100%;
+    height: 50px;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+}
+
+.weekdays div {
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 1.1px;
+    line-height: 44px;
+    color: #000;
+    width: calc(390px / 7);
+    background-color: #fff;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5px;
+}
+.days {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+.days div {
+    font-size: 14px;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5px;
+
+}
+.deys div:hover:not(.today) {
+    background-color: ;
+}
+.prev-date, .next-date {
+    opacity: 0.3;
+}
+.today{
+    background-color: #fff;
+    color: #000;
+    border-radius: 6px;
+    font-weight: 600;
+}
