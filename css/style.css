@@ -21,7 +21,7 @@ button {
     width: 100%;
     height: 100%;
     min-height: 100vh;
-    background: url("../images/skybg.jpeg") center/cover no-repeat;
+    background: url("../images/xspacecraft-008.png.pagespeed.ic.ZnRKT9w4TS.png") no-repeat left bottom/50%, url("../images/skybg.jpeg") center/cover no-repeat;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -37,6 +37,7 @@ button {
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-right: 1px solid rgba(255, 255, 255, 0.2);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
     backdrop-filter: blur(20px);
 }
 .book__form {
@@ -56,6 +57,7 @@ button {
     display: flex;
     justify-content: space-between;
     margin-top: 3px;
+    position: relative;
 }
 .book__label {
     font-size: 12px;
@@ -85,6 +87,7 @@ button {
     width: 208px;
     height: 64.5px;
     box-shadow: inset 0px 0px 8px 3px rgba(255, 255, 255, 0.5);
+    border-radius: 2px;
     text-transform: uppercase;
     color: #fff;
     font-weight: 600;
@@ -106,11 +109,14 @@ button {
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-right: 1px solid rgba(255, 255, 255, 0.2);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
     backdrop-filter: blur(20px);
     color: #fff;
+    padding: 25px;
+}
+.calendar__wrapper {
     display: flex;
     justify-content: space-between;
-    padding: 25px;
 }
 .next, .prev {
     position: absolute;
@@ -122,6 +128,10 @@ button {
 }
 .next {
     right: 50px;
+}
+.calendar__btns {
+    display: flex;
+    justify-content: flex-end;
 }
 .calendar__half {
     flex: 0 0 50%;
@@ -137,12 +147,13 @@ button {
     align-items: center;
     font-size: 16px;
 }
-.date__month, .date__year {
+.date__month, .date__year, .date__month-d, .date__year-d {
     padding: 0 5px;
 }
 
 .calendar__table {
     padding: 16px;
+    min-height: 312px;
 }
 .weekdays {
     display: flex;
@@ -154,81 +165,87 @@ button {
     text-align: center;   
     width: calc(280px / 7);
 }
-.days {
+.days, .days-d {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
+    cursor: pointer;
+    transition: box-shadow 0.2s linear;
 }
-.days div{
+.days div,.days-d div{
     font-size: 16px;
     line-height: 40px;
     text-align: center;
     width: calc(280px / 7);
-}
-
-/* .month i {
-    font-size: 24px;
-    cursor: pointer;
-}
-.month h1 {
-    font-size: 30px;
-    font-weight: 400;
-    letter-spacing: 1.1px;
-    line-height: 40px;
-}
-.month p {
-    font-size: 17px;
-    font-weight: 400;
-}
-.weekdays {
-    width: 100%;
-    height: 50px;
-    padding: 0 10px;
-    display: flex;
-    align-items: center;
-}
-
-.weekdays div {
-    font-size: 16px;
-    font-weight: 600;
-    letter-spacing: 1.1px;
-    line-height: 44px;
-    color: #000;
-    width: calc(390px / 7);
-    background-color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 5px;
-}
-.days {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    padding: 10px;
-}
-.days div {
-    font-size: 14px;
-    width: 44px;
-    height: 44px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 5px;
-    cursor: pointer;
     transition: box-shadow 0.2s linear;
 }
-.days div:hover:not(.today) {
-    
-    box-shadow: inset 0px 0px 8px 2px rgba(255, 255, 255, 0.3);
+
+.hide-calendar {
+    width: 67px;
+    height: 32px;
+    box-shadow: inset 0px 0px 8px 3px rgba(255, 255, 255, 0.5);
+    border-radius: 3px;
+    color: #fff;
+    font-weight: 400;
+    font-size: 16px;
+    transition: background-color 0.3s linear, color 0.3s linear;
 }
-.prev-date, .next-date {
-    opacity: 0.4;
+.hide-calendar:hover {
+    background-color: #fff;
+    color: #000;
 }
+.reset-form {
+    margin-right: 20px;
+    color: #fff;
+    font-weight: 400;
+    font-size: 16px;
+    text-decoration: underline;
+    transition: opacity 0.3s linear;
+}
+
+
 .today{
     background-color: #fff;
     color: #000;
     font-weight: 600;
-} */
+    border-radius: 3px;
+}
+.days div:hover:not(.today) {
+    border-radius: 3px;
+    box-shadow: inset 0px 0px 8px 2px rgba(255, 255, 255, 0.3);
+}
+
+.reset-form:hover {
+    opacity: 0.6;
+}
 
 
+.guests-error {
+    position: absolute;
+    background-color:rgba(255, 255, 255, 0.95);
+    color: rgb(51, 51, 51);
+    top: -80px;
+    left: 40px;
+    width: 210px;
+    height: 60px;
+    padding: 10px;
+    border-radius: 3px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s linear;
+}
+.guests-error::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 8px 7px 0 7px;
+    border-color: rgba(255, 255, 255, 0.95) transparent transparent transparent;
+    top: 60px;
+    left: 10px;
+}
+._show-error {
+    opacity: 1;
+    visibility: visible;
+}
