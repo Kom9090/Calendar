@@ -5,33 +5,142 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calendar</title>
-    <link rel="stylesheet" href="./css/iconsfont.css">
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
     <div class="container">
-        <div class="calendar">
-            <div class="month">
-                <i class="fas fa-angle-left prev"></i>
-                <div class="date">
-                    <h1></h1>
-                    <p></p>
+        <div class="book book__wrapper">
+            <form action="" class="book__form">
+                <div class="book__elem">
+                    <label class="book__label" for="startDate" >Check in</label>
+                    <input class="book__input" type="number" name="startDate" id="startDate" placeholder="Add dates">
                 </div>
-                <i class="fas fa-angle-right next"></i>
+                <div class="book__elem">
+                    <label class="book__label" for="nextDate">Check out</label>
+                    <input class="book__input" type="number" name="nextDate" id="nextDate" placeholder="Add dates">
+                </div>
+                <div class="book__elem">
+                    <label class="book__label" for="number">Guests</label>
+                    <div class="book__input-block">
+                        <button class="book__minus book__btn-n">-</button>
+                        <input class="book__input book__input-guests" type="number" name="number" id="number" placeholder="1">
+                        <button class="book__plus book__btn-n">+</button>
+                    </div>
+                </div>
+                <button class="book__submit" type="submit">Book</button>
+            </form>
+        </div>
+        <div class="calendar"> 
+            <button class="prev"><img src="./images/arrow.svg" alt="arrow prev" width="15px"></button>
+            <button class="next"><img src="./images/arrow.svg" alt="arrow next" width="15px"></button>
+            <div class="calendar__half">
+                <div class="calendar__header">
+                    <div class="date">
+                        <span class="date__month">January</span>
+                        <span class="date__year">2021</span>
+                    </div>    
+                </div>
+                <div class="calendar__table">
+                    <div class="weekdays">
+                            <div>SU</div>
+                            <div>MO</div>
+                            <div>TU</div>
+                            <div>WE</div>
+                            <div>TH</div>
+                            <div>FR</div>
+                            <div>ST</div>  
+                    </div>
+                    <div class="days">
+                            <div>1</div>
+                            <div>2</div>
+                            <div>3</div>
+                            <div>4</div>
+                            <div>5</div>
+                            <div>6</div>
+                            <div>7</div>
+                            <div>1</div>
+                            <div>2</div>
+                            <div>3</div>
+                            <div>4</div>
+                            <div>5</div>
+                            <div>6</div>
+                            <div>7</div>
+                            <div>1</div>
+                            <div>2</div>
+                            <div>3</div>
+                            <div>4</div>
+                            <div>5</div>
+                            <div>25</div>
+                            <div>7</div>
+                            <div>1</div>
+                            <div>2</div>
+                            <div>3</div>
+                            <div>4</div>
+                            <div>5</div>
+                            <div>6</div>
+                            <div>7</div>
+                            <div>4</div>
+                            <div>5</div>
+                            <div>6</div>
+                            <div>7</div>
+                            <div>1</div>
+                            <div>2</div>
+                            <div>3</div>
+                            <div>4</div>
+                    </div>
+                </div>
             </div>
-            <div class="weekdays">
-                <div>SU</div>
-                <div>MO</div>
-                <div>TU</div>
-                <div>WE</div>
-                <div>TH</div>
-                <div>FR</div>
-                <div>ST</div>
-            </div>
-            <div class="days">
-                
+            <div class="calendar__half">
+                <div class="calendar__header">
+                    <div class="date">
+                        <span class="date__month">January</span>
+                        <span class="date__year">2021</span>
+                    </div>    
+                </div>
+                <div class="calendar__table">
+                    <div class="weekdays">
+                            <div>SU</div>
+                            <div>MO</div>
+                            <div>TU</div>
+                            <div>WE</div>
+                            <div>TH</div>
+                            <div>FR</div>
+                            <div>ST</div>  
+                    </div>
+                    <div class="days">
+                            <div>1</div>
+                            <div>2</div>
+                            <div>3</div>
+                            <div>4</div>
+                            <div>5</div>
+                            <div>6</div>
+                            <div>7</div>
+                            <div>1</div>
+                            <div>2</div>
+                            <div>3</div>
+                            <div>4</div>
+                            <div>5</div>
+                            <div>6</div>
+                            <div>7</div>
+                            <div>1</div>
+                            <div>2</div>
+                            <div>3</div>
+                            <div>4</div>
+                            <div>5</div>
+                            <div>25</div>
+                            <div>7</div>
+                            <div>1</div>
+                            <div>2</div>
+                            <div>3</div>
+                            <div>4</div>
+                            <div>5</div>
+                            <div>6</div>
+                            <div>7</div>
+                    </div>
+                </div>
             </div>
         </div>
+        
     </div>
     <script src="calendar.js"></script>
 </body>
