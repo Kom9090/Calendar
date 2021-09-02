@@ -11,21 +11,20 @@
     <div class="container">
         <div class="book book__wrapper">
             <form action="" class="book__form">
-                <div class="book__elem">
-                    <label class="book__label" for="startDate" >Check in</label>
-                    <input class="book__input" type="number" name="startDate" id="startDate" placeholder="Add dates">
-                </div>
-                <div class="book__elem">
-                    <label class="book__label" for="nextDate">Check out</label>
-                    <input class="book__input" type="number" name="nextDate" id="nextDate" placeholder="Add dates">
-                </div>
+                <button class="book__search-date">
+                    <span class="book__label">Check in</span>
+                    <span class="book__input">Add dates</span>
+                </button>
+                <button class="book__search-date">
+                    <span class="book__label">Check out</span>
+                    <span class="book__input">Add dates</span>
+                </button>
                 <div class="book__elem">
                     <label class="book__label" for="number">Guests</label>
                     <div class="book__input-block">
                         <div class="book__minus book__btn-n">-</div>
                         <input class="book__input book__input-guests" type="number" name="number" id="number" placeholder="1" value="1" required>
                         <div class="book__plus book__btn-n">+</div>
-                        <div class="guests-error">Rooms are designed for no more than 5 people</div>
                     </div>
                 </div>
                 <button class="book__submit" type="submit">Book</button>

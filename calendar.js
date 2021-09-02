@@ -1,43 +1,55 @@
-//add guests button
+//guests buttons
 const inputGuests = document.querySelector(".book__input-guests");
 const minusBtn = document.querySelector(".book__minus");
 const plusBtn = document.querySelector(".book__plus");
 const guestsErr = document.querySelector(".guests-error");
 
+hideMinus();
+
 inputGuests.addEventListener("blur", () => {
     if(inputGuests.value == "" || inputGuests.value == "0") {
         inputGuests.value = "1";
+        hideMinus();
+        showPlus();
     } else if (Number(inputGuests.value) > 5) {
         inputGuests.value = "5";
-        showError();
+        hidePlus();
+        showMinus();
+    } else {
+        showMinus();
+        showPlus();
     }
 });
 
 
 plusBtn.addEventListener("click", () => {
-    if(Number(inputGuests.value) < 5) {
-        inputGuests.stepUp();
-    } else {
-        showError();
-    }
+    showMinus(); 
+    inputGuests.stepUp();
+    if(Number(inputGuests.value) == 5) {
+        hidePlus();
+    } 
 });
 
 minusBtn.addEventListener("click", () => {
-    if(Number(inputGuests.value) > 1) {
-        inputGuests.stepDown();
+    showPlus();
+    inputGuests.stepDown();
+    if(Number(inputGuests.value) == 1) {
+        hideMinus();
     }
 });
 
-guestsErr.addEventListener("click", () => {
-    guestsErr.classList.remove("_show-error");
-});
-
-
-function showError() {
-    guestsErr.classList.add("_show-error");
-    setTimeout(function() {guestsErr.classList.remove("_show-error")}, 6000);
+function hidePlus() {
+        plusBtn.classList.add("_no-active");
 }
-
+function showPlus() {
+        plusBtn.classList.remove("_no-active");
+}
+function hideMinus() {
+    minusBtn.classList.add("_no-active");
+}
+function showMinus() {
+    minusBtn.classList.remove("_no-active");
+}
 
 
 
@@ -165,3 +177,4 @@ monthDays.innerHTML = days;
 // });
 
 // renderCalendar();
+
