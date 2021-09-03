@@ -58,7 +58,7 @@ window.onload = function () {
 
     const close = document.querySelector(".hide-calendar");
     const searchBtn = document.querySelectorAll(".book__search-date");
-
+    const bookInput = document.querySelectorAll(".book__input");
     close.addEventListener("click", () => {
         Calendar.style.display = "none";
     });
@@ -66,6 +66,10 @@ window.onload = function () {
     searchBtn.forEach(function(item) {
         item.addEventListener("click", (e) => {
             e.preventDefault();
+            for(let i = 0; i < bookInput.length; i++) {
+                bookInput[i].classList.remove("_active-search");  
+            }
+            item.lastElementChild.classList.add("_active-search");
             if(Calendar.style.display == "none") {
                 Calendar.style.display = "block";
             } 
@@ -105,7 +109,7 @@ function load() {
   const paddingDays = weekdays.indexOf(dateString.split(', ')[0]);
 
   document.querySelector('.date__month').innerText = 
-    `${dt.toLocaleDateString('en-us', { month: 'long' })} ${year}`;
+    `${dt.toLocaleDateString('en-us', { month: 'short' })} ${year}`;
 
   calendar.innerHTML = '';
  
@@ -156,7 +160,7 @@ function renderNextMonth() {
         const paddingDays = weekdays.indexOf(dateString.split(', ')[0]);
       
         document.querySelector('.date__month-d').innerText = 
-          `${dt.toLocaleDateString('en-us', { month: 'long' })} ${year}`;
+          `${dt.toLocaleDateString('en-us', { month: 'short' })} ${year}`;
       
         calendarSecond.innerHTML = '';
        
@@ -214,7 +218,7 @@ function initButtons() {
         const paddingDays = weekdays.indexOf(dateString.split(', ')[0]);
       
         document.querySelector('.date__month').innerText = 
-          `${dt.toLocaleDateString('en-us', { month: 'long' })} ${year}`;
+          `${dt.toLocaleDateString('en-us', { month: 'short' })} ${year}`;
       
         calendar.innerHTML = '';
        
@@ -263,7 +267,7 @@ function initButtons() {
             const paddingDays = weekdays.indexOf(dateString.split(', ')[0]);
           
             document.querySelector('.date__month-d').innerText = 
-              `${dt.toLocaleDateString('en-us', { month: 'long' })} ${year}`;
+              `${dt.toLocaleDateString('en-us', { month: 'short' })} ${year}`;
           
             calendarSecond.innerHTML = '';
            
@@ -296,3 +300,49 @@ function initButtons() {
 initButtons();
 load();
 renderNextMonth();
+
+//buttons search
+
+const startDate = document.querySelector(".start-date");
+const lastDate = document.querySelector(".last-date");
+//onload first date
+let options = { day: 'numeric', month: 'numeric', year: "numeric" };
+let todayText = new Date().toLocaleString('en-us', options);
+startDate.textContent = `${todayText}`;
+
+
+const dayArr = document.querySelectorAll(".day");
+
+dayArr.forEach(function(item) {
+    
+        item.addEventListener("click", () => { 
+
+            if (startDate.classList.contains("_active-search")) {
+
+                for (let i = 0; i < dayArr.length; i++) {
+                    dayArr[i].classList.remove("_checked");
+                    item.classList.add("_checked");
+                    startDate.textContent = `${item.textContent} ${document.querySelector('.date__month').textContent}`;  
+                }
+
+                startDate.classList.remove("_active-search");
+                lastDate.classList.add("_active-search");  
+
+            }  else if (lastDate.classList.contains("_active-search")) {
+
+                if (document.querySelector("._checked")) {
+
+                    for (let i = 0; i < dayArr.length; i++) {
+                        dayArr[i].classList.remove("_checked-up");
+                        item.classList.add("_checked-up");
+                        lastDate.textContent = `${item.textContent} ${document.querySelector('.date__month').textContent}`;
+                        Calendar.style.display = "none";  
+                    }
+
+                }
+            }
+
+        });
+   
+    
+})
